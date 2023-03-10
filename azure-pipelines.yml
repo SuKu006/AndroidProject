@@ -10,10 +10,6 @@ pool:
   vmImage: 'macOS-latest'
 
 steps:
-- task: NodeTool@0
-  inputs:
-    versionSpec: '16.17.1'
-  displayName: 'Install Node.js'
 
 - task: JavaToolInstaller@0
   inputs:
