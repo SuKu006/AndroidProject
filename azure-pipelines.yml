@@ -7,9 +7,22 @@ trigger:
 - master
 
 pool:
-  vmImage: 'macos-latest'
+  vmImage: 'macOS-latest'
 
 steps:
+
+- task: JavaToolInstaller@0
+  inputs:
+    versionSpec: '11'
+    jdkArchitectureOption: 'x64'
+    jdkSourceOption: 'PreInstalled'
+
+- script: |
+    npm install
+    cd android
+    echo "org.gradle.java.home=$JAVA_HOME" >> ./gradle.properties
+  displayName: 'Android Setup Script'
+
 - task: Gradle@2
   inputs:
     workingDirectory: ''
@@ -18,3 +31,4 @@ steps:
     publishJUnitResults: false
     testResultsFiles: '**/TEST-*.xml'
     tasks: 'assembleDebug'
+
