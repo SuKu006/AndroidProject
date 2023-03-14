@@ -44,7 +44,7 @@ class LoginActivity : AppCompatActivity() {
             }
         }
     }
-
+    // Call the api
     private fun login() {
         val call: Call<SearchResponse> =
             APIClient.getClient().create(APIInterface::class.java)
